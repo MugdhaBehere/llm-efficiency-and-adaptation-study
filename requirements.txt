@@ -1,0 +1,10 @@
+transformers
+peft
+datasets
+accelerate
+bitsandbytes
+trl
+evaluate
+rouge-score
+pandas
+matplotlib
