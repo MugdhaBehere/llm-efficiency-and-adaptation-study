@@ -17,9 +17,9 @@ Hardware: Trained on NVIDIA T4 GPU
 
 Experimental Setup & Ablation :
 I conducted a controlled experiment comparing a zero-shot base model against two LoRA configurations to observe the impact of the rank parameter ($r$):
-Base Model: Zero-shot inference with a summarization prompt.
-LoRA (r=8): Low-rank adaptation with 100 samples.
-LoRA (r=32): Increased capacity adaptation to test for scaling bottlenecks.
+1. Base Model: Zero-shot inference with a summarization prompt.
+2. LoRA (r=8): Low-rank adaptation with 100 samples.
+3. LoRA (r=32): Increased capacity adaptation to test for scaling bottlenecks.
 
 Results and Quantitative Analysis:
 Metric	Base Model	LoRA (r=8)	LoRA (r=32)
@@ -29,9 +29,9 @@ ROUGE-L	0.138	0.149	0.085
 
 
 Key Findings:
-The "Sweet Spot": The $r=8$ configuration yielded a 13% relative improvement in ROUGE-2, indicating successful learning of phrase-level summary structures.
-Capacity Collapse: Increasing the rank to $r=32$ led to a significant performance drop. This suggests that in low-data regimes ($N=100$), higher-rank adapters overfit to the training noise, causing "catastrophic forgetting" of the base model's linguistic capabilities.
-Continuation Bias: Qualitative analysis revealed a persistent "continuation bias," where the model occasionally treats the prompt as a prefix to be extended rather than a command to be executed.
+1. The "Sweet Spot": The $r=8$ configuration yielded a 13% relative improvement in ROUGE-2, indicating successful learning of phrase-level summary structures.
+2. Capacity Collapse: Increasing the rank to $r=32$ led to a significant performance drop. This suggests that in low-data regimes ($N=100$), higher-rank adapters overfit to the training noise, causing "catastrophic forgetting" of the base model's linguistic capabilities.
+3. Continuation Bias: Qualitative analysis revealed a persistent "continuation bias," where the model occasionally treats the prompt as a prefix to be extended rather than a command to be executed.
 
 How to Run:
 1. Clone the repo:
